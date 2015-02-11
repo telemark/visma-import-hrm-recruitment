@@ -62,5 +62,13 @@ class Import {
 		Logger("INFO", "Dropping collection");
 
 	}
+
+	// Output to json for debugging
+	function outputJson($array) {
+ 		$json = json_encode($array, JSON_PRETTY_PRINT);
+		echo $json;
+		die();
+	}
+
 }
 ?>

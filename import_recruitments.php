@@ -48,9 +48,7 @@ foreach($xml->opening as $opening) {
 }
 
 /* Output json for debugging
-$json = json_encode($result, true);
-echo($json);
-die();
+$import->outputJson($result);
 */
 
 // Drop collection

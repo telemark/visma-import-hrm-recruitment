@@ -20,7 +20,7 @@ define('VISMA_BASE_URL', 'http://tfk-fh-uqweb01.login.top.no:8110/hrm_ws');
 
 // Visma recruitments
 define('VISMA_RECRUITMENTS', true); // Activate Visma recruitment import
-define('RECRUITMENTS_PATH', ROOT_PATH . 'recruitments');
+define('RECRUITMENTS_PATH', ROOT_PATH . 'visma-import-hrm-recruitment');
 define('RECRUITMENTS_SCRIPT', 'import_recruitments.php');
 define('RECRUITMENTS_COLLECTION', 'recruitments');
 
