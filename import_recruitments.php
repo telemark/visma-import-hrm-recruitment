@@ -2,6 +2,7 @@
 include("../credentials.php");
 include("config.php");
 include("import.class.php");
+include("simple_html_dom.php");
 require("logger.class.php");
 
 // Setting URLs
@@ -14,7 +15,6 @@ $import = new Import(RECRUITMENTS_COLLECTION);
 // Check if Visma webservice is up
 $test = $import->getUrl($test_url);
 $import->ifUp($test);
-
 
 // Load recruitments xml
 $imp_str = $import->getUrl($recruitments_url);
@@ -40,6 +40,14 @@ foreach($xml->opening as $opening) {
 	$job['deadline'] = (string) $opening->deadline;
 	$job['title'] = (string) $opening->headline;
 	$job['link'] = (string) $opening->link;
+
+	// This gets jobdescription form url with html-scraping
+	$data = $import->getUrl($job['link']);
+	$recruitmentText = $import->scrapeOpening($data);
+
+	$job['recruitmentText'] = $recruitmentText['text'];
+	$job['recruitmentFormattedText'] = $recruitmentText['html'];
+
 	$job['positionType'] = (string) $opening->positionType;
 
 	$result[] = $job;
