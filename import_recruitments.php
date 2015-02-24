@@ -37,6 +37,7 @@ foreach($xml->opening as $opening) {
 	$job['locationId'] = (int) $opening->location->attributes()->id;
 	$job['locationName'] = (string) $opening->location->attributes()->name;
 	$job['published'] = (string) $opening->published;
+	$job['applications'] = (int) $opening->applications;
 	$job['deadline'] = (string) $opening->deadline;
 	$job['title'] = (string) $opening->headline;
 	$job['link'] = (string) $opening->link;
@@ -58,6 +59,7 @@ foreach($xml->opening as $opening) {
 /* Output json for debugging
 $import->outputJson($result);
 */
+
 
 // Drop collection
 $import->mDrop();
